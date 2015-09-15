@@ -7,6 +7,7 @@ object SimpleApp {
   def main(args: Array[String]) {
     val logFile = "resources/Sonnet.txt"
     val conf = new SparkConf().setAppName("Simple Application")
+    println("SparkConf: " + conf)
     val sc = new SparkContext(conf)
     val logData = sc.textFile(logFile, 2).cache()
     val numAs = logData.filter(line => line.contains("a")).count()
