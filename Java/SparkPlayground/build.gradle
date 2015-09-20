@@ -1,0 +1,13 @@
+group 'philippa.main'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.11'
+    compile 'org.apache.spark:spark-core_2.10:1.5.0'
+}
