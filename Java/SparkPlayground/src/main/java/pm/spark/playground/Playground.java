@@ -7,7 +7,7 @@ import org.apache.spark.api.java.JavaSparkContext;
 
 public class Playground {
     public static void main(String[] args) {
-        String logFile = "resources/sonnet.txt";
+        String logFile = "resources/Sonnet01.txt";
         SparkConf conf = new SparkConf()
                 .setMaster("local[2]")
                 .setAppName("Simple Application");
