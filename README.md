@@ -4,3 +4,5 @@ To run the Spark Scala shell, if SPARK_HOME is set to the Spark installation dir
 ```
 $SPARK_HOME/bin/spark-shell
 ```
+
+In this project there is a Java sub-project, SparkPlayground, to try out the Spark Java API.

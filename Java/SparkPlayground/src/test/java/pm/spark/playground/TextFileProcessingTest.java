@@ -21,8 +21,8 @@ public class TextFileProcessingTest {
     @BeforeClass
     static public void setUp() {
         SparkConf conf = new SparkConf()
-                .setMaster("local[2]")
-                .setAppName("Simple Application");
+                .setMaster(TestConfig.MASTER)
+                .setAppName(TestConfig.APP_NAME);
         System.out.println("SparkConf: " + conf);
         sc = new JavaSparkContext(conf);
     }
@@ -37,7 +37,7 @@ public class TextFileProcessingTest {
         printResourcePath("2.1", "pm/spark/playground/Sonnet27NotUsed.txt");
         printResourcePath("2.2", "/pm/spark/playground/Sonnet27NotUsed.txt");
         printResourcePath("2.3", "pm.spark.playground.Sonnet27NotUsed.txt");
-        // In src/test/resources/pm/spark/playground/Sonnet27.txt
+        // In src/test/resources/pm/spark/playground/Sonnet18NotUsed.txt
         printResourcePath("3.1", "/pm/spark/playground/Sonnet18NotUsed.txt"); // works
         printResourcePath("3.2", "pm.spark.playground.Sonnet18NotUsed.txt");
         printResourcePath("3.3", "Sonnet18NotUsed.txt"); // works
@@ -54,7 +54,7 @@ public class TextFileProcessingTest {
 
     @Test
     public void processTextFileInProjectResourcesDirectory() {
-        String path = "resources/Sonnet01.txt"; // File in resources/Sonnet01.txt
+        String path = this.getClass().getResource("Sonnet01.txt").getPath();
         JavaRDD<String> rdd = sc.textFile(path).cache();
 
         long count = rdd.filter(line -> line.contains("the")).count(); // Counts whole words only
